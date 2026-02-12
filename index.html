@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARSHAL TRADINGS | Professional Trading Hub</title>
+    <title>MARSHAL TRADINGS | Professional Trading Education</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
         :root {
             --primary: #0088cc;
             --accent: #00d4ff;
-            --dark-bg: #030712;
+            --dark-bg: #020617;
             --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --gold: #fbbf24;
+            --border: rgba(255, 255, 255, 0.1);
+            --gold: #f59e0b;
         }
 
         * {
@@ -30,256 +28,222 @@
         body {
             background-color: var(--dark-bg);
             color: #ffffff;
-            overflow-x: hidden;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            /* Attractive Fixed Gradient Background */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 136, 204, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 40%),
+                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            background-attachment: fixed;
         }
 
-        /* --- Animated Glowing Background --- */
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #003b5c 0%, #030712 100%);
-        }
-
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 136, 204, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-        }
-
-        /* --- Layout --- */
+        /* --- Header Section --- */
         header {
-            padding: 60px 20px 20px;
+            padding: 70px 20px 30px;
             text-align: center;
         }
 
-        .logo-box {
+        .logo-wrapper {
+            position: relative;
             display: inline-block;
-            opacity: 0;
-            transform: translateY(30px);
         }
 
         .logo-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 30px;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.2);
+            width: 130px;
+            height: 130px;
+            border-radius: 35px;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
+            object-fit: cover;
             margin-bottom: 20px;
         }
 
-        .brand-text {
+        .brand-name {
             display: block;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            background: linear-gradient(to bottom, #fff, #94a3b8);
+            background: linear-gradient(to bottom, #ffffff 50%, #64748b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        /* --- Hero Section --- */
         .hero {
-            max-width: 900px;
+            max-width: 850px;
             text-align: center;
-            padding: 40px 20px;
+            padding: 40px 24px;
         }
 
-        h1 {
-            font-size: clamp(2.8rem, 9vw, 4.5rem);
+        .hero h1 {
+            font-size: clamp(2.8rem, 8vw, 4.8rem);
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1.05;
             margin-bottom: 25px;
-            opacity: 0;
-            background: linear-gradient(135deg, #fff 30%, var(--accent));
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #ffffff, #00d4ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
             color: #94a3b8;
-            font-size: 1.25rem;
-            margin-bottom: 45px;
-            max-width: 700px;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 50px;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.6;
-            opacity: 0;
         }
 
-        /* --- The Action Button --- */
-        .cta-container {
-            opacity: 0;
-            transform: scale(0.8);
-        }
-
-        .btn-main {
-            position: relative;
+        /* --- Attractive Telegram Button --- */
+        .cta-button {
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            background: var(--primary);
-            color: #fff;
-            padding: 22px 55px;
+            background: linear-gradient(135deg, #0088cc 0%, #00d4ff 100%);
+            color: white;
+            padding: 24px 60px;
             border-radius: 100px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1.2rem;
-            box-shadow: 0 15px 40px rgba(0, 136, 204, 0.4);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.3rem;
+            box-shadow: 0 20px 40px rgba(0, 136, 204, 0.4);
+            transition: 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px rgba(0, 136, 204, 0.6);
+            filter: brightness(1.1);
+        }
+
+        /* --- Static High-End Cards --- */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 80px;
+            width: 100%;
+        }
+
+        .stat-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 40px 60px;
+            border-radius: 32px;
+            backdrop-filter: blur(20px);
+            text-align: center;
+            min-width: 220px;
+            position: relative;
             overflow: hidden;
         }
 
-        .btn-main:hover {
-            transform: translateY(-5px) scale(1.03);
-            background: #00a2f3;
-            box-shadow: 0 20px 60px rgba(0, 136, 204, 0.6);
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--accent);
         }
 
-        /* --- Glass Stats --- */
-        .stats-grid {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 70px;
-            opacity: 0;
-        }
-
-        .glass-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            padding: 35px 50px;
-            border-radius: 30px;
-            backdrop-filter: blur(12px);
-            transition: 0.3s ease;
-        }
-
-        .glass-card:hover {
-            border-color: var(--accent);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .glass-card h2 {
-            font-size: 2.8rem;
-            color: var(--accent);
+        .stat-card h2 {
+            font-size: 3rem;
             font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 5px;
         }
 
-        .glass-card p {
-            color: #64748b;
-            font-weight: 700;
+        .stat-card p {
+            color: var(--accent);
             text-transform: uppercase;
+            font-weight: 700;
             font-size: 0.9rem;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         /* --- Footer --- */
         footer {
             margin-top: auto;
-            padding: 80px 20px 40px;
+            padding: 100px 20px 50px;
             text-align: center;
         }
 
-        .agency-tag {
+        .agency-badge {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(251, 191, 36, 0.1);
+            background: rgba(245, 158, 11, 0.1);
             color: var(--gold);
-            padding: 12px 28px;
+            padding: 14px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.95rem;
-            border: 1px solid rgba(251, 191, 36, 0.2);
+            border: 1px solid rgba(245, 158, 11, 0.3);
             transition: 0.3s;
         }
 
-        .agency-tag:hover {
-            background: rgba(251, 191, 36, 0.2);
-            transform: translateY(-2px);
+        .agency-badge:hover {
+            background: rgba(245, 158, 11, 0.2);
         }
 
-        /* Mobile Optimization */
+        .copyright {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #475569;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile Adjustments */
         @media (max-width: 600px) {
-            .stats-grid { flex-direction: column; align-items: center; width: 100%; }
-            .glass-card { width: 90%; }
-            h1 { font-size: 2.6rem; }
+            .stats-row { flex-direction: column; align-items: center; }
+            .stat-card { width: 90%; }
+            .hero h1 { font-size: 3rem; }
+            header { padding-top: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow">
-        <div class="blob" id="blob1"></div>
-        <div class="blob" id="blob2"></div>
-    </div>
-
     <header>
-        <div class="logo-box" id="logo">
+        <div class="logo-wrapper">
             <img src="https://mahakalx.sbs/wp-content/uploads/2026/02/marsshall.jpg" alt="Marshal Logo" class="logo-img">
-            <span class="brand-text">MARSHAL TRADINGS</span>
+            <span class="brand-name">MARSHAL TRADINGS</span>
         </div>
     </header>
 
     <main class="hero">
-        <h1 id="title">Master the Art <br>of Trading</h1>
-        <p id="para">The ultimate destination for Price Action mastery. We turn retail traders into institutional-grade market analysts.</p>
+        <h1>Master the Art <br>of Trading</h1>
+        <p>Providing the industry-leading education for Price Action and Smart Money Concepts. Join 5,000+ students today.</p>
         
-        <div class="cta-container" id="cta">
-            <a href="https://telegram.me/+QdBxdgFHnG0xNWE1" class="btn-main">
-                <i class="fab fa-telegram-plane"></i> JOIN FREE TELEGRAM
-            </a>
-        </div>
+        <a href="https://telegram.me/+QdBxdgFHnG0xNWE1" class="cta-button">
+            <i class="fab fa-telegram-plane"></i> Join Free Telegram
+        </a>
 
-        <div class="stats-grid" id="stats">
-            <div class="glass-card">
+        <div class="stats-row">
+            <div class="stat-card">
                 <h2>90%</h2>
                 <p>Accuracy</p>
             </div>
-            <div class="glass-card">
+            <div class="stat-card">
                 <h2>5K+</h2>
-                <p>Members</p>
+                <p>Community</p>
             </div>
         </div>
     </main>
 
     <footer>
-        <a href="https://t.me/+TRlJl628l-FkMWE9" class="agency-tag">
-            <i class="fas fa-bolt"></i> Managed by Nexgroww Agency
+        <a href="https://t.me/+TRlJl628l-FkMWE9" class="agency-badge">
+            <i class="fas fa-crown"></i> Managed by Nexgroww Agency
         </a>
-        <p style="color: #475569; font-size: 0.85rem; margin-top: 30px;">
-            &copy; 2026 Marshal Tradings. Education Only. No Financial Advice.
-        </p>
+        <p class="copyright">&copy; 2026 Marshal Tradings Education. All rights reserved.</p>
     </footer>
 
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            // GSAP Sequence
-            const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.4 } });
-
-            tl.to("#logo", { opacity: 1, y: 0 })
-              .to("#title", { opacity: 1, y: 0 }, "-=1")
-              .to("#para", { opacity: 1, y: 0 }, "-=1")
-              .to("#cta", { opacity: 1, scale: 1 }, "-=1")
-              .to("#stats", { opacity: 1, y: 0 }, "-=1");
-
-            // Float Animations
-            gsap.to(".logo-img", { y: -12, duration: 2.5, repeat: -1, yoyo: true, ease: "sine.inOut" });
-            
-            // Move Background Blobs
-            gsap.to("#blob1", { x: 100, y: 50, duration: 10, repeat: -1, yoyo: true, ease: "sine.inOut" });
-            gsap.to("#blob2", { x: -100, y: -50, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
-        });
-    </script>
 </body>
 </html>
