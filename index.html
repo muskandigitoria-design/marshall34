@@ -39,10 +39,7 @@
         /* --- 3D Animated Grid Background --- */
         .bg-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             perspective: 1000px;
             background: radial-gradient(circle at center, #0f172a 0%, #020408 100%);
@@ -51,10 +48,8 @@
 
         .grid-3d {
             position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
+            width: 200%; height: 200%;
+            top: -50%; left: -50%;
             background-image: 
                 linear-gradient(var(--glass-border) 1px, transparent 1px),
                 linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
@@ -72,22 +67,22 @@
         /* --- Layout --- */
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             padding: 40px 0;
             position: relative;
         }
 
-        /* --- Header & Logo --- */
+        /* --- Header --- */
         header {
             text-align: center;
-            margin-bottom: 30px;
             animation: fadeIn 1s ease-out;
+            width: 100%;
         }
 
         .logo-wrapper {
@@ -100,12 +95,9 @@
         }
 
         .logo-box img {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 25px;
-            display: block;
-            background: #000;
+            width: 80px; height: 80px;
+            object-fit: cover; border-radius: 25px;
+            display: block; background: #000;
         }
 
         .brand-tag {
@@ -117,7 +109,16 @@
             font-weight: 700;
         }
 
-        /* --- Hero Section --- */
+        /* --- Main Content Section --- */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
         .hero {
             text-align: center;
             max-width: 700px;
@@ -125,9 +126,9 @@
 
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 10vw, 4rem);
-            line-height: 1;
-            margin-bottom: 20px;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 25px;
             font-weight: 800;
             background: linear-gradient(to bottom, #fff 40%, var(--primary-gold));
             -webkit-background-clip: text;
@@ -135,13 +136,14 @@
         }
 
         .hero p {
-            font-size: clamp(0.95rem, 4vw, 1.1rem);
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--text-dim);
             margin-bottom: 40px;
-            padding: 0 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* --- High-End Button --- */
         .btn-premium {
             display: inline-flex;
             align-items: center;
@@ -152,81 +154,85 @@
             border-radius: 100px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 10px 30px var(--primary-glow);
-            position: relative;
-            overflow: hidden;
         }
 
-        .btn-premium:active {
-            transform: scale(0.95);
+        .btn-premium:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--primary-glow);
         }
 
-        /* --- Mobile-Optimized Stats --- */
+        /* --- Stats --- */
         .stats-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 20px;
             width: 100%;
-            max-width: 450px;
-            margin-top: 50px;
+            max-width: 500px;
         }
 
         .stat-card {
             background: var(--glass);
             border: 1px solid var(--glass-border);
-            padding: 20px;
-            border-radius: 24px;
+            padding: 30px 20px;
+            border-radius: 30px;
             backdrop-filter: blur(15px);
             text-align: center;
+            transition: 0.3s;
         }
+
+        .stat-card:hover { border-color: var(--primary-gold); }
 
         .stat-card h3 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: var(--primary-gold);
             font-family: 'Space Grotesk', sans-serif;
-            margin-bottom: 2px;
         }
 
-        .stat-card p {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-dim);
+        /* --- Desktop Responsive Adjustments --- */
+        @media (min-width: 1024px) {
+            .container { justify-content: space-around; padding: 60px 0; }
+            
+            header { text-align: left; }
+            
+            .content-wrapper {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+
+            .hero { text-align: left; flex: 1; }
+            .hero p { margin-left: 0; }
+            
+            .stats-container {
+                flex: 0 0 400px;
+                grid-template-columns: 1fr; /* Stacked on right side for desktop */
+            }
+
+            .logo-box img { width: 100px; height: 100px; }
         }
 
         /* --- Footer --- */
-        footer {
-            margin-top: 50px;
-        }
+        footer { width: 100%; display: flex; justify-content: center; }
 
         .agency-badge {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             background: rgba(255, 255, 255, 0.05);
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 100px;
             color: #fff;
             text-decoration: none;
-            font-size: 0.8rem;
-            border: 1px solid transparent;
-            transition: 0.3s;
+            font-size: 0.9rem;
+            border: 1px solid var(--glass-border);
         }
-
-        .agency-badge span { color: var(--primary-gold); font-weight: bold; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Responsive Tweaks --- */
-        @media (max-width: 480px) {
-            .container { padding-top: 60px; justify-content: flex-start; }
-            .hero h1 { font-size: 2.8rem; }
-            .btn-premium { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -246,25 +252,27 @@
             <div class="brand-tag">Marshal Tradings</div>
         </header>
 
-        <main class="hero">
-            <h1>Master The <br>Market Flow.</h1>
-            <p>Advanced Institutional SMC Strategies designed for high-precision retail trading. Stop guessing, start executing.</p>
-            
-            <a href="https://telegram.me/+QdBxdgFHnG0xNWE1" class="btn-premium">
-                <i class="fab fa-telegram-plane"></i> JOIN THE ALPHA HUB
-            </a>
+        <div class="content-wrapper">
+            <main class="hero">
+                <h1>Master The <br>Market Flow.</h1>
+                <p>Advanced Institutional SMC Strategies designed for high-precision retail trading. Stop guessing, start executing with the elite.</p>
+                
+                <a href="https://telegram.me/+QdBxdgFHnG0xNWE1" class="btn-premium">
+                    <i class="fab fa-telegram-plane"></i> JOIN THE ALPHA HUB
+                </a>
+            </main>
 
-            <div class="stats-container">
+            <aside class="stats-container">
                 <div class="stat-card">
                     <h3>90%</h3>
-                    <p>Strike Rate</p>
+                    <p>STRIKE RATE</p>
                 </div>
                 <div class="stat-card">
                     <h3>5K+</h3>
-                    <p>Traders Hub</p>
+                    <p>TRADERS HUB</p>
                 </div>
-            </div>
-        </main>
+            </aside>
+        </div>
 
         <footer>
             <a href="https://t.me/+TRlJl628l-FkMWE9" class="agency-badge">
