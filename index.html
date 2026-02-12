@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARSHAL TRADINGS | Professional Trading Education</title>
+    <title>MARSHAL TRADINGS | Professional Trading Hub</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -28,63 +28,55 @@
         body {
             background-color: var(--dark-bg);
             color: #ffffff;
-            min-height: 100vh;
+            height: 100vh; /* Force one screen on desktop */
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Attractive Fixed Gradient Background */
+            justify-content: center; /* Center content vertically */
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(0, 136, 204, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 40%),
-                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-            background-attachment: fixed;
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 40%);
+            overflow: hidden; /* Prevent scrolling on desktop */
         }
 
-        /* --- Header Section --- */
+        /* --- Compact Header --- */
         header {
-            padding: 70px 20px 30px;
+            padding: 20px;
             text-align: center;
         }
 
-        .logo-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-
         .logo-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 35px;
-            border: 3px solid var(--accent);
-            box-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
-            object-fit: cover;
-            margin-bottom: 20px;
+            width: 90px; /* Smaller logo */
+            height: 90px;
+            border-radius: 25px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+            margin-bottom: 10px;
         }
 
         .brand-name {
             display: block;
-            font-size: 2.2rem;
+            font-size: 1.4rem; /* Smaller text */
             font-weight: 800;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            background: linear-gradient(to bottom, #ffffff 50%, #64748b 100%);
+            background: linear-gradient(to bottom, #ffffff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         /* --- Hero Section --- */
         .hero {
-            max-width: 850px;
+            max-width: 700px;
             text-align: center;
-            padding: 40px 24px;
+            padding: 10px 24px;
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 8vw, 4.8rem);
+            font-size: 2.8rem; /* Elegant smaller size for desktop */
             font-weight: 800;
-            line-height: 1.05;
-            margin-bottom: 25px;
-            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 15px;
             background: linear-gradient(to right, #ffffff, #00d4ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -92,138 +84,109 @@
 
         .hero p {
             color: #94a3b8;
-            font-size: 1.3rem;
-            line-height: 1.7;
-            margin-bottom: 50px;
-            max-width: 650px;
+            font-size: 1.05rem; /* Smaller, cleaner paragraph */
+            line-height: 1.5;
+            margin-bottom: 30px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* --- Attractive Telegram Button --- */
+        /* --- CTA --- */
         .cta-button {
             display: inline-flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             background: linear-gradient(135deg, #0088cc 0%, #00d4ff 100%);
             color: white;
-            padding: 24px 60px;
-            border-radius: 100px;
+            padding: 18px 45px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 800;
-            font-size: 1.3rem;
-            box-shadow: 0 20px 40px rgba(0, 136, 204, 0.4);
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 15px 30px rgba(0, 136, 204, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 25px 50px rgba(0, 136, 204, 0.6);
+            transform: translateY(-3px);
             filter: brightness(1.1);
         }
 
-        /* --- Static High-End Cards --- */
+        /* --- Compact Stats --- */
         .stats-row {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 80px;
-            width: 100%;
+            gap: 20px;
+            margin-top: 40px;
         }
 
         .stat-card {
             background: var(--glass);
             border: 1px solid var(--border);
-            padding: 40px 60px;
-            border-radius: 32px;
-            backdrop-filter: blur(20px);
-            text-align: center;
-            min-width: 220px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: var(--accent);
+            padding: 20px 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            min-width: 150px;
         }
 
         .stat-card h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 5px;
+            font-size: 2rem;
+            color: #fff;
         }
 
         .stat-card p {
             color: var(--accent);
+            font-size: 0.75rem;
             text-transform: uppercase;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         /* --- Footer --- */
         footer {
-            margin-top: auto;
-            padding: 100px 20px 50px;
+            padding: 40px 20px 20px;
             text-align: center;
         }
 
         .agency-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(245, 158, 11, 0.1);
+            font-size: 0.8rem;
             color: var(--gold);
-            padding: 14px 30px;
-            border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
             border: 1px solid rgba(245, 158, 11, 0.3);
-            transition: 0.3s;
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: rgba(245, 158, 11, 0.05);
         }
 
-        .agency-badge:hover {
-            background: rgba(245, 158, 11, 0.2);
-        }
-
-        .copyright {
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: #475569;
-            letter-spacing: 0.5px;
-        }
-
-        /* Mobile Adjustments */
+        /* --- Mobile Responsive Fixes --- */
         @media (max-width: 600px) {
-            .stats-row { flex-direction: column; align-items: center; }
-            .stat-card { width: 90%; }
-            .hero h1 { font-size: 3rem; }
-            header { padding-top: 40px; }
+            body { 
+                height: auto; 
+                overflow-y: auto; 
+                justify-content: flex-start;
+                padding-top: 20px;
+            }
+            .hero h1 { font-size: 2.2rem; }
+            .stats-row { flex-direction: row; gap: 10px; }
+            .stat-card { padding: 15px 25px; min-width: 120px; }
+            .stat-card h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-wrapper">
-            <img src="https://mahakalx.sbs/wp-content/uploads/2026/02/marsshall.jpg" alt="Marshal Logo" class="logo-img">
-            <span class="brand-name">MARSHAL TRADINGS</span>
-        </div>
+        <img src="https://mahakalx.sbs/wp-content/uploads/2026/02/marsshall.jpg" alt="Logo" class="logo-img">
+        <span class="brand-name">MARSHAL TRADINGS</span>
     </header>
 
     <main class="hero">
         <h1>Master the Art <br>of Trading</h1>
-        <p>Providing the industry-leading education for Price Action and Smart Money Concepts. Join 5,000+ students today.</p>
+        <p>Providing industry-leading education for Price Action and Smart Money Concepts. Join 5,000+ students today.</p>
         
         <a href="https://telegram.me/+QdBxdgFHnG0xNWE1" class="cta-button">
-            <i class="fab fa-telegram-plane"></i> Join Free Telegram
+            <i class="fab fa-telegram-plane"></i> JOIN FREE TELEGRAM
         </a>
 
         <div class="stats-row">
@@ -242,7 +205,6 @@
         <a href="https://t.me/+TRlJl628l-FkMWE9" class="agency-badge">
             <i class="fas fa-crown"></i> Managed by Nexgroww Agency
         </a>
-        <p class="copyright">&copy; 2026 Marshal Tradings Education. All rights reserved.</p>
     </footer>
 
 </body>
