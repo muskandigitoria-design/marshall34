@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MARSHAL TRADINGS | Institutional Trading Hub</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-dark: #05070a;
-            --primary: #00f2ff;
-            --primary-glow: rgba(0, 242, 255, 0.4);
-            --secondary: #7000ff;
-            --text-main: #f8fafc;
+            --bg-dark: #020408;
+            --primary-gold: #e2b05e;
+            --primary-glow: rgba(226, 176, 94, 0.3);
+            --accent-blue: #3b82f6;
+            --text-main: #ffffff;
             --text-dim: #94a3b8;
-            --glass: rgba(15, 23, 42, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass: rgba(10, 15, 25, 0.8);
+            --glass-border: rgba(226, 176, 94, 0.2);
         }
 
         * {
@@ -30,45 +30,43 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
+            min-height: 100vh;
         }
 
-        /* --- Advanced Background --- */
-        .bg-wrapper {
+        /* --- 3D Animated Grid Background --- */
+        .bg-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #101827 0%, #05070a 100%);
+            perspective: 1000px;
+            background: radial-gradient(circle at center, #0f172a 0%, #020408 100%);
+            overflow: hidden;
         }
 
-        .mesh-gradient {
+        .grid-3d {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
             background-image: 
-                radial-gradient(at 0% 0%, rgba(112, 0, 255, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(0, 242, 255, 0.1) 0px, transparent 50%);
-            filter: blur(80px);
+                linear-gradient(var(--glass-border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: rotateX(60deg) translateY(0);
+            animation: grid-move 20s linear infinite;
+            mask-image: radial-gradient(ellipse at center, black, transparent 80%);
         }
 
-        .scanline {
-            width: 100%;
-            height: 100px;
-            z-index: 0;
-            background: linear-gradient(0deg, rgba(0, 242, 255, 0) 0%, rgba(0, 242, 255, 0.05) 50%, rgba(0, 242, 255, 0) 100%);
-            position: absolute;
-            bottom: 100%;
-            animation: scan 8s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { bottom: 100%; }
-            100% { bottom: -100px; }
+        @keyframes grid-move {
+            0% { transform: rotateX(60deg) translateY(0); }
+            100% { transform: rotateX(60deg) translateY(50px); }
         }
 
         /* --- Layout --- */
@@ -82,228 +80,196 @@
             justify-content: center;
             align-items: center;
             padding: 40px 0;
+            position: relative;
         }
 
-        /* --- Header --- */
+        /* --- Header & Logo --- */
         header {
             text-align: center;
-            margin-bottom: 40px;
-            animation: fadeInDown 0.8s ease backwards;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out;
         }
 
-        .logo-box {
+        .logo-wrapper {
             position: relative;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--primary-gold), transparent);
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 15px;
         }
 
         .logo-box img {
-            width: 100%;
-            height: 100%;
+            width: 90px;
+            height: 90px;
             object-fit: cover;
-            border-radius: 24px;
-            border: 2px solid var(--glass-border);
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+            border-radius: 25px;
+            display: block;
+            background: #000;
         }
 
-        .brand-name {
+        .brand-tag {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 5px;
+            font-size: 0.9rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            background: linear-gradient(to right, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-gold);
+            font-weight: 700;
         }
 
         /* --- Hero Section --- */
         .hero {
             text-align: center;
-            max-width: 800px;
+            max-width: 700px;
         }
 
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.2rem, 8vw, 4.5rem);
-            line-height: 1.1;
+            font-size: clamp(2.5rem, 10vw, 4rem);
+            line-height: 1;
             margin-bottom: 20px;
             font-weight: 800;
-            animation: fadeInUp 0.8s ease backwards 0.2s;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-            text-shadow: 0 0 20px var(--primary-glow);
+            background: linear-gradient(to bottom, #fff 40%, var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: clamp(1rem, 4vw, 1.2rem);
+            font-size: clamp(0.95rem, 4vw, 1.1rem);
             color: var(--text-dim);
             margin-bottom: 40px;
-            padding: 0 20px;
-            animation: fadeInUp 0.8s ease backwards 0.4s;
+            padding: 0 10px;
         }
 
-        /* --- CTA Button --- */
-        .cta-group {
-            animation: fadeInUp 0.8s ease backwards 0.6s;
-        }
-
-        .btn-telegram {
+        /* --- High-End Button --- */
+        .btn-premium {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: var(--primary);
+            background: var(--primary-gold);
             color: #000;
-            padding: 18px 40px;
-            border-radius: 16px;
+            padding: 20px 45px;
+            border-radius: 100px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1.1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 0 0 var(--primary-glow);
-            animation: pulse 2s infinite;
-        }
-
-        .btn-telegram:hover {
-            transform: translateY(-3px) scale(1.02);
+            font-size: 1rem;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 10px 30px var(--primary-glow);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* --- Stats Card --- */
-        .stats-grid {
+        .btn-premium:active {
+            transform: scale(0.95);
+        }
+
+        /* --- Mobile-Optimized Stats --- */
+        .stats-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 15px;
             width: 100%;
-            max-width: 500px;
-            margin-top: 60px;
-            animation: fadeInUp 0.8s ease backwards 0.8s;
+            max-width: 450px;
+            margin-top: 50px;
         }
 
-        .stat-item {
+        .stat-card {
             background: var(--glass);
             border: 1px solid var(--glass-border);
-            padding: 25px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
             text-align: center;
         }
 
-        .stat-item h3 {
-            font-size: 2rem;
-            color: var(--primary);
+        .stat-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-gold);
             font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 2px;
         }
 
-        .stat-item p {
-            font-size: 0.75rem;
+        .stat-card p {
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             color: var(--text-dim);
-            margin-top: 5px;
         }
 
-        /* --- Footer Badge --- */
+        /* --- Footer --- */
         footer {
-            margin-top: 60px;
-            animation: fadeIn 1.5s ease backwards 1s;
+            margin-top: 50px;
         }
 
-        .agency-link {
+        .agency-badge {
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 20px;
             border-radius: 100px;
-            color: #f59e0b;
+            color: #fff;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            border: 1px solid transparent;
             transition: 0.3s;
         }
 
-        .agency-link:hover {
-            background: rgba(245, 158, 11, 0.1);
-            border-color: #f59e0b;
-        }
+        .agency-badge span { color: var(--primary-gold); font-weight: bold; }
 
-        /* --- Animations --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 242, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0); }
         }
 
         /* --- Responsive Tweaks --- */
         @media (max-width: 480px) {
-            .container { padding: 20px 0; justify-content: flex-start; }
-            .hero h1 { margin-top: 20px; }
-            .stats-grid { grid-template-columns: 1fr; gap: 12px; }
-            .btn-telegram { width: 100%; justify-content: center; }
-            .logo-box { width: 80px; height: 80px; }
-        }
-
-        /* Tablet/Desktop */
-        @media (min-width: 768px) {
-            .stats-grid { gap: 30px; }
-            .hero p { padding: 0 100px; }
+            .container { padding-top: 60px; justify-content: flex-start; }
+            .hero h1 { font-size: 2.8rem; }
+            .btn-premium { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-wrapper">
-        <div class="mesh-gradient"></div>
-        <div class="scanline"></div>
+    <div class="bg-container">
+        <div class="grid-3d"></div>
     </div>
 
     <div class="container">
         <header>
-            <div class="logo-box">
-                <img src="https://mahakalx.sbs/wp-content/uploads/2026/02/marsshall.jpg" alt="Marshal Tradings">
+            <div class="logo-wrapper">
+                <div class="logo-box">
+                    <img src="https://mahakalx.sbs/wp-content/uploads/2026/02/marsshall.jpg" alt="Marshal Tradings">
+                </div>
             </div>
-            <div class="brand-name">Marshal Tradings</div>
+            <div class="brand-tag">Marshal Tradings</div>
         </header>
 
         <main class="hero">
-            <h1>Level Up Your <br><span>Trading DNA.</span></h1>
-            <p>Unlocking institutional liquidity and advanced SMC concepts for the modern retail trader. Precision entries, defined exits.</p>
+            <h1>Master The <br>Market Flow.</h1>
+            <p>Advanced Institutional SMC Strategies designed for high-precision retail trading. Stop guessing, start executing.</p>
             
-            <div class="cta-group">
-                <a href="https://telegram.me/+QdBxdgFHnG0xNWE1" class="btn-telegram">
-                    <i class="fab fa-telegram-plane"></i> JOIN THE ALPHA HUB
-                </a>
-            </div>
+            <a href="https://telegram.me/+QdBxdgFHnG0xNWE1" class="btn-premium">
+                <i class="fab fa-telegram-plane"></i> JOIN THE ALPHA HUB
+            </a>
 
-            <div class="stats-grid">
-                <div class="stat-item">
+            <div class="stats-container">
+                <div class="stat-card">
                     <h3>90%</h3>
                     <p>Strike Rate</p>
                 </div>
-                <div class="stat-item">
+                <div class="stat-card">
                     <h3>5K+</h3>
-                    <p>Active Students</p>
+                    <p>Traders Hub</p>
                 </div>
             </div>
         </main>
 
         <footer>
-            <a href="https://t.me/+TRlJl628l-FkMWE9" class="agency-link">
-                <i class="fas fa-bolt"></i> Powered by Nexgroww Agency
+            <a href="https://t.me/+TRlJl628l-FkMWE9" class="agency-badge">
+                <i class="fas fa-shield-halved"></i> 
+                SECURE ACCESS BY <span>NEXGROWW</span>
             </a>
         </footer>
     </div>
