@@ -2,283 +2,311 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARSHAL TRADINGS | Professional Trading Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MARSHAL TRADINGS | Institutional Trading Hub</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --primary: #0088cc;
-            --accent: #00d4ff;
-            --dark-bg: #030712;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --gold: #f59e0b;
+            --bg-dark: #05070a;
+            --primary: #00f2ff;
+            --primary-glow: rgba(0, 242, 255, 0.4);
+            --secondary: #7000ff;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --glass: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: #ffffff;
-            height: 100vh;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Advanced Background --- */
+        .bg-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #101827 0%, #05070a 100%);
+        }
+
+        .mesh-gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(112, 0, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 242, 255, 0.1) 0px, transparent 50%);
+            filter: blur(80px);
+        }
+
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 0;
+            background: linear-gradient(0deg, rgba(0, 242, 255, 0) 0%, rgba(0, 242, 255, 0.05) 50%, rgba(0, 242, 255, 0) 100%);
+            position: absolute;
+            bottom: 100%;
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+
+        /* --- Layout --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Animated Background Grid */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background-image: 
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            transform: perspective(500px) rotateX(60deg) translateY(-100px);
-            animation: gridMove 20s linear infinite;
-            z-index: -1;
-            opacity: 0.3;
-        }
-
-        @keyframes gridMove {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
-        }
-
-        /* Glow Orbs */
-        .orb {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(40px);
+            align-items: center;
+            padding: 40px 0;
         }
 
         /* --- Header --- */
         header {
-            padding: 10px;
             text-align: center;
-            animation: fadeInDown 1s ease;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease backwards;
         }
 
-        .logo-container {
+        .logo-box {
             position: relative;
-            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
         }
 
-        .logo-img {
-            width: 85px;
-            height: 85px;
-            border-radius: 22px;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
-            transition: transform 0.5s ease;
-        }
-
-        .logo-container:hover .logo-img {
-            transform: rotateY(10deg) scale(1.05);
+        .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
         }
 
         .brand-name {
-            display: block;
-            font-size: 1.2rem;
-            font-weight: 800;
-            letter-spacing: 4px;
-            margin-top: 10px;
-            background: linear-gradient(to right, #fff, var(--accent));
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- Hero --- */
+        /* --- Hero Section --- */
         .hero {
-            max-width: 800px;
             text-align: center;
-            padding: 20px;
-            z-index: 1;
+            max-width: 800px;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.2rem, 8vw, 4.5rem);
+            line-height: 1.1;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 30%, #00d4ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 0.8s ease;
+            font-weight: 800;
+            animation: fadeInUp 0.8s ease backwards 0.2s;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            text-shadow: 0 0 20px var(--primary-glow);
         }
 
         .hero p {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 35px;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 1s ease;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            padding: 0 20px;
+            animation: fadeInUp 0.8s ease backwards 0.4s;
         }
 
-        /* --- CTA --- */
-        .cta-button {
+        /* --- CTA Button --- */
+        .cta-group {
+            animation: fadeInUp 0.8s ease backwards 0.6s;
+        }
+
+        .btn-telegram {
             display: inline-flex;
             align-items: center;
-            gap: 15px;
-            background: linear-gradient(135deg, #0088cc 0%, #00d4ff 100%);
-            color: white;
-            padding: 20px 45px;
-            border-radius: 100px;
+            gap: 12px;
+            background: var(--primary);
+            color: #000;
+            padding: 18px 40px;
+            border-radius: 16px;
             text-decoration: none;
             font-weight: 800;
             font-size: 1.1rem;
-            box-shadow: 0 10px 40px rgba(0, 136, 204, 0.4);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 0 0 var(--primary-glow);
             animation: pulse 2s infinite;
         }
 
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 50px rgba(0, 136, 204, 0.6);
+        .btn-telegram:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px var(--primary-glow);
         }
 
-        /* --- Stats --- */
-        .stats-row {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 50px;
-            animation: fadeInUp 1.2s ease;
+        /* --- Stats Card --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 60px;
+            animation: fadeInUp 0.8s ease backwards 0.8s;
         }
 
-        .stat-card {
+        .stat-item {
             background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 25px 45px;
-            border-radius: 24px;
-            backdrop-filter: blur(12px);
-            transition: 0.3s;
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            text-align: center;
         }
 
-        .stat-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent);
-            transform: translateY(-5px);
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        .stat-card h2 {
-            font-size: 2.2rem;
-            background: linear-gradient(to bottom, #fff, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-card p {
-            color: #94a3b8;
-            font-size: 0.8rem;
-            font-weight: 600;
+        .stat-item p {
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: var(--text-dim);
+            margin-top: 5px;
         }
 
-        /* --- Footer --- */
+        /* --- Footer Badge --- */
         footer {
-            margin-top: 50px;
-            animation: fadeIn 2s ease;
+            margin-top: 60px;
+            animation: fadeIn 1.5s ease backwards 1s;
         }
 
-        .agency-badge {
-            font-size: 0.85rem;
-            color: var(--gold);
+        .agency-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 8px 20px;
+            border-radius: 100px;
+            color: #f59e0b;
             text-decoration: none;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            padding: 10px 25px;
-            border-radius: 50px;
-            background: rgba(245, 158, 11, 0.05);
+            font-size: 0.85rem;
             transition: 0.3s;
         }
 
-        .agency-badge:hover {
-            background: rgba(245, 158, 11, 0.15);
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+        .agency-link:hover {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: #f59e0b;
         }
 
-        /* Animations */
+        /* --- Animations --- */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 10px 40px rgba(0, 136, 204, 0.4); }
-            50% { box-shadow: 0 10px 60px rgba(0, 136, 204, 0.7); }
-            100% { box-shadow: 0 10px 40px rgba(0, 136, 204, 0.4); }
+            0% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 242, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0); }
         }
 
-        /* Mobile */
-        @media (max-width: 600px) {
-            body { height: auto; padding: 40px 0; overflow-y: auto; }
-            .hero h1 { font-size: 2.5rem; }
-            .stats-row { flex-direction: column; align-items: center; width: 100%; }
-            .stat-card { width: 80%; }
-            body::before { display: none; }
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 480px) {
+            .container { padding: 20px 0; justify-content: flex-start; }
+            .hero h1 { margin-top: 20px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 12px; }
+            .btn-telegram { width: 100%; justify-content: center; }
+            .logo-box { width: 80px; height: 80px; }
+        }
+
+        /* Tablet/Desktop */
+        @media (min-width: 768px) {
+            .stats-grid { gap: 30px; }
+            .hero p { padding: 0 100px; }
         }
     </style>
 </head>
 <body>
-    <div class="orb" style="top: -100px; left: -100px;"></div>
-    <div class="orb" style="bottom: -100px; right: -100px;"></div>
 
-    <header>
-        <div class="logo-container">
-            <img src="https://mahakalx.sbs/wp-content/uploads/2026/02/marsshall.jpg" alt="Logo" class="logo-img">
-        </div>
-        <span class="brand-name">MARSHAL TRADINGS</span>
-    </header>
+    <div class="bg-wrapper">
+        <div class="mesh-gradient"></div>
+        <div class="scanline"></div>
+    </div>
 
-    <main class="hero">
-        <h1>Trade Like a<br><span style="color: #00d4ff;">Professional.</span></h1>
-        <p>Master Price Action and SMC with institutional-grade strategies. We don't just trade; we read the market's footprint.</p>
-        
-        <a href="https://telegram.me/+QdBxdgFHnG0xNWE1" class="cta-button">
-            <i class="fab fa-telegram-plane"></i> JOIN FREE TELEGRAM
-        </a>
-
-        <div class="stats-row">
-            <div class="stat-card">
-                <h2>90%</h2>
-                <p>Accuracy</p>
+    <div class="container">
+        <header>
+            <div class="logo-box">
+                <img src="https://mahakalx.sbs/wp-content/uploads/2026/02/marsshall.jpg" alt="Marshal Tradings">
             </div>
-            <div class="stat-card">
-                <h2>5K+</h2>
-                <p>Traders</p>
-            </div>
-        </div>
-    </main>
+            <div class="brand-name">Marshal Tradings</div>
+        </header>
 
-    <footer>
-        <a href="https://t.me/+TRlJl628l-FkMWE9" class="agency-badge">
-            <i class="fas fa-crown"></i> Managed by Nexgroww Agency
-        </a>
-    </footer>
+        <main class="hero">
+            <h1>Level Up Your <br><span>Trading DNA.</span></h1>
+            <p>Unlocking institutional liquidity and advanced SMC concepts for the modern retail trader. Precision entries, defined exits.</p>
+            
+            <div class="cta-group">
+                <a href="https://telegram.me/+QdBxdgFHnG0xNWE1" class="btn-telegram">
+                    <i class="fab fa-telegram-plane"></i> JOIN THE ALPHA HUB
+                </a>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>90%</h3>
+                    <p>Strike Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5K+</h3>
+                    <p>Active Students</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <a href="https://t.me/+TRlJl628l-FkMWE9" class="agency-link">
+                <i class="fas fa-bolt"></i> Powered by Nexgroww Agency
+            </a>
+        </footer>
+    </div>
+
 </body>
 </html>
